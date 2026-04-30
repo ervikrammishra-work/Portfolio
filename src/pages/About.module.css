@@ -1,0 +1,183 @@
+/* pages/About.module.css */
+
+.about {
+  background: linear-gradient(180deg, var(--bg-primary), var(--bg-secondary));
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* Bio */
+.bioCol {}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.bio p {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  font-size: 0.95rem;
+}
+
+.infoGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.infoLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  min-width: 70px;
+}
+
+.infoValue {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.infoLink {
+  font-size: 0.9rem;
+  color: var(--accent-primary);
+  transition: opacity var(--transition-fast);
+}
+
+.infoLink:hover {
+  opacity: 0.75;
+}
+
+.available {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--accent-primary);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  animation: pulse-glow 2s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(100, 255, 218, 0); }
+}
+
+/* Experience timeline */
+.expCol {}
+
+.expTitle {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border-subtle);
+}
+
+.timelineItem {
+  display: flex;
+  gap: 1.25rem;
+  padding-bottom: 2rem;
+  position: relative;
+}
+
+.timelineDot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-primary);
+  background: var(--bg-primary);
+  flex-shrink: 0;
+  margin-top: 3px;
+  position: relative;
+  z-index: 1;
+}
+
+.timelineContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.roleHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.role {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.period {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.company {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-primary);
+}
+
+.expDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-top: 0.4rem;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}

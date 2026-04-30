@@ -1,0 +1,227 @@
+/* pages/Hero.module.css */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Atmospheric gradients */
+.gradientBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  background: linear-gradient(to top, var(--bg-primary), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gradientLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: radial-gradient(ellipse at left center,
+    rgba(8, 10, 15, 0.75) 0%,
+    transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Content */
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+  padding-top: 6rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.textStack {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Animation */
+.fadeInUp {
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Typography */
+.greeting {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent-primary);
+  letter-spacing: 0.1em;
+}
+
+.mono {
+  margin-right: 0.4em;
+  opacity: 0.6;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-top: 0.1em;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4vw, 2.5rem);
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.2;
+}
+
+.tagline {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-top: 0.25rem;
+}
+
+/* CTAs */
+.cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  background: transparent;
+  border: 1.5px solid var(--accent-primary);
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background var(--transition-base), color var(--transition-base),
+    transform var(--transition-fast), box-shadow var(--transition-base);
+}
+
+.btnPrimary:hover {
+  background: rgba(100, 255, 218, 0.1);
+  box-shadow: 0 0 24px rgba(100, 255, 218, 0.15);
+  transform: translateY(-2px);
+}
+
+.btnPrimary svg {
+  transition: transform var(--transition-base);
+}
+
+.btnPrimary:hover svg {
+  transform: translateX(4px);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 1.75rem;
+  background: transparent;
+  border: 1.5px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color var(--transition-base), color var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.btnSecondary:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+/* Scroll indicator */
+.scrollHint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.4;
+  animation: bobble 2s ease-in-out infinite;
+}
+
+@keyframes bobble {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+.mouse {
+  width: 20px;
+  height: 30px;
+  border: 1.5px solid var(--text-secondary);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding-top: 4px;
+}
+
+.wheel {
+  width: 3px;
+  height: 6px;
+  background: var(--accent-primary);
+  border-radius: 2px;
+  animation: scrollWheel 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(8px); }
+}
+
+.scrollLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .scrollHint {
+    display: none;
+  }
+
+  .gradientLeft {
+    display: none;
+  }
+}

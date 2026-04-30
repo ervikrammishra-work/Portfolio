@@ -1,0 +1,133 @@
+/* components/ProjectCard.module.css */
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform var(--transition-base), border-color var(--transition-base),
+    background var(--transition-base), box-shadow var(--transition-base);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-slow);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-glow);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Header row */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iconRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.folderIcon {
+  width: 28px;
+  height: 28px;
+  color: var(--accent-primary);
+}
+
+.year {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* Links */
+.links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.iconLink {
+  color: var(--text-secondary);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: flex;
+  align-items: center;
+}
+
+.iconLink:hover {
+  color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+/* Body */
+.body {
+  flex: 1;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  transition: color var(--transition-fast);
+}
+
+.card:hover .title {
+  color: var(--accent-primary);
+}
+
+.description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* Tags */
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  background: rgba(100, 255, 218, 0.05);
+  border: 1px solid rgba(100, 255, 218, 0.12);
+  padding: 0.2em 0.65em;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.card:hover .tag {
+  color: var(--accent-primary);
+  border-color: rgba(100, 255, 218, 0.25);
+}

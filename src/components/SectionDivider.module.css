@@ -1,0 +1,23 @@
+/* components/SectionDivider.module.css */
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0 2rem;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}

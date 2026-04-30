@@ -1,0 +1,102 @@
+/* pages/Skills.module.css */
+
+.skills {
+  background: var(--bg-primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.category {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 1.75rem;
+  transition: border-color var(--transition-base);
+}
+
+.category:hover {
+  border-color: var(--border-glow);
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.categoryIcon {
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+}
+
+.categoryTitle {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.skillsList {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tag cloud */
+.tagCloud {
+  text-align: center;
+}
+
+.tagCloudLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 0.3em 0.8em;
+  border-radius: 20px;
+  transition: all var(--transition-fast);
+  cursor: default;
+}
+
+.tag:hover {
+  color: var(--accent-primary);
+  border-color: var(--border-glow);
+  background: rgba(100, 255, 218, 0.05);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
