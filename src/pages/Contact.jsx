@@ -11,17 +11,42 @@ import styles from './Contact.module.css';
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Wire to your backend / Formspree / EmailJS
-    setSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => setSubmitted(false), 4000);
+    setSubmitError('');
+    setIsSubmitting(true);
+
+    try {
+      const payload = new URLSearchParams({
+        'form-name': 'contact',
+        ...formData,
+      }).toString();
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: payload,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Submission failed with status ${response.status}`);
+      }
+
+      setSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch (error) {
+      setSubmitError('Unable to send right now. Please email me directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -68,7 +93,16 @@ export default function Contact() {
                 <p>Message sent! I'll be in touch soon.</p>
               </div>
             ) : (
-              <form className={styles.form} onSubmit={handleSubmit} noValidate>
+              <form
+                className={styles.form}
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                onSubmit={handleSubmit}
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="bot-field" />
                 <div className={styles.row}>
                   <div className={styles.field}>
                     <label className={styles.label} htmlFor="name">Name</label>
@@ -112,8 +146,10 @@ export default function Contact() {
                   />
                 </div>
 
-                <button type="submit" className={styles.submitBtn}>
-                  Send Message
+                {submitError && <p className={styles.errorText}>{submitError}</p>}
+
+                <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round"
