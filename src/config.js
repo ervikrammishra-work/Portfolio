@@ -10,12 +10,13 @@ export const PERSONAL_INFO = {
     high-performance web applications. I thrive at the intersection of clean 
     engineering and thoughtful design — shipping products that are fast, 
     accessible, and genuinely delightful to use.`,
-  email: "vikram@example.com",
-  location: "San Francisco, CA",
+  email: "ervikrammishra@gmail.com",
+  location: "Noida, India",
   resumeUrl: "/resume.pdf", // Place your resume PDF in /public/resume.pdf
   social: {
-    github: "https://github.com/vikrammishra",
-    linkedin: "https://linkedin.com/in/vikrammishra",
+    
+    github: "https://github.com/ervikrammishra-work",
+    linkedin: "https://linkedin.com/in/vikram-mishra-811903367/",
     twitter: "https://twitter.com/vikrammishra",
   },
 };
@@ -98,10 +99,12 @@ export const SKILLS = {
     
   ],
   Backend: [
-    { name: "Node.js / Express", level: 92 },
-    { name: "Python / FastAPI", level: 85 },
+    { name: " ExpressJS", level: 70  },
+    { name: "Node.js ", level: 40 },
+    { name: "MySQL", level: 40 },
     
-    { name: "Redis", level: 82 }
+    { name: "MongoDB", level: 40 },
+    { name: "Redis", level: 20 }
     
   ],
   Tools: [

@@ -1,10 +1,10 @@
-# 🚀 Developer Portfolio
+#  Developer Portfolio
 
 A top-tier, production-quality developer portfolio built with **React**, **Three.js**, and modern CSS.
 
 ---
 
-## ✨ Features
+##  Features
 
 - **Interactive 3D hero** — Wireframe icosahedron + particle field, mouse-reactive camera
 - **Smooth scroll reveals** — CSS + IntersectionObserver animations
@@ -16,7 +16,7 @@ A top-tier, production-quality developer portfolio built with **React**, **Three
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 portfolio/
@@ -28,7 +28,7 @@ portfolio/
 └── src/
     ├── App.jsx              ← Root component (assembles all sections)
     ├── main.jsx             ← Entry point
-    ├── config.js            ← ⭐ All editable content (name, projects, skills...)
+    ├── config.js            ← All editable content (name, projects, skills...)
     ├── components/
     │   ├── Navbar.jsx       ← Fixed top navigation
     │   ├── HeroCanvas.jsx   ← Three.js 3D scene
@@ -53,7 +53,7 @@ portfolio/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - Node.js 18+ and npm

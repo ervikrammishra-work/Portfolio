@@ -50,6 +50,7 @@ export default function Contact() {
               <SocialLink href={PERSONAL_INFO.social.github} label="GitHub">
                 <GitHubIcon />
               </SocialLink>
+              
               <SocialLink href={PERSONAL_INFO.social.linkedin} label="LinkedIn">
                 <LinkedInIcon />
               </SocialLink>
@@ -165,6 +166,8 @@ function GitHubIcon() {
     </svg>
   );
 }
+
+
 
 function LinkedInIcon() {
   return (
