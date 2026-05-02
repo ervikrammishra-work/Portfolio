@@ -5,7 +5,7 @@ import styles from './Contact.module.css';
 
 /**
  * Contact section:
- * - Email form (UI only — wire up to your own backend or Formspree)
+ * - Email form powered by backend API
  * - Social links
  */
 export default function Contact() {
@@ -24,26 +24,30 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const payload = new URLSearchParams({
-        'form-name': 'contact',
-        ...formData,
-      }).toString();
-
-      const response = await fetch('/', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: payload,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
-        throw new Error(`Submission failed with status ${response.status}`);
+        let errorMessage = `Submission failed with status ${response.status}`;
+        try {
+          const data = await response.json();
+          if (data?.error) {
+            errorMessage = data.error;
+          }
+        } catch {
+          // Keep fallback status message if response is not JSON.
+        }
+        throw new Error(errorMessage);
       }
 
       setSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
       setTimeout(() => setSubmitted(false), 4000);
     } catch (error) {
-      setSubmitError('Unable to send right now. Please email me directly.');
+      setSubmitError(error.message || 'Unable to send right now. Please email me directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -95,14 +99,8 @@ export default function Contact() {
             ) : (
               <form
                 className={styles.form}
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
               >
-                <input type="hidden" name="form-name" value="contact" />
-                <input type="hidden" name="bot-field" />
                 <div className={styles.row}>
                   <div className={styles.field}>
                     <label className={styles.label} htmlFor="name">Name</label>
