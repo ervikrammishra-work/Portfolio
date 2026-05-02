@@ -22,9 +22,8 @@ export default function About() {
             <div className={styles.bio}>
               <p>{PERSONAL_INFO.bio}</p>
               <p>
-                When I'm not building, I'm contributing to open source, writing
-                about web performance, or exploring new tools at the edges of
-                what the browser can do.
+                When I'm not building, I'm exploring AI as a work tool and
+                experimenting with new features to improve productivity and user experience.
               </p>
             </div>
 

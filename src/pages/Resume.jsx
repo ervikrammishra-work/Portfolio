@@ -37,10 +37,10 @@ export default function Resume() {
             {/* Quick stats */}
             <div className={styles.stats}>
               {[
-                { label: 'Years of Experience', value: '5+' },
-                { label: 'Projects Shipped', value: '40+' },
-                { label: 'GitHub Stars', value: '3.2k' },
-                { label: 'Open Source Contributions', value: '200+' },
+                { label: 'Years of Experience', value: 'Fresher' },
+                { label: 'Projects Shipped', value: '3+ ' },
+                
+                { label: 'Open Source Contributions', value: '20+' },
               ].map((s) => (
                 <div key={s.label} className={styles.stat}>
                   <span className={styles.statVal}>{s.value}</span>
