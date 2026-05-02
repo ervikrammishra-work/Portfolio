@@ -3,11 +3,6 @@ import React, { useState } from 'react';
 import { PERSONAL_INFO } from '../config.js';
 import styles from './Contact.module.css';
 
-/**
- * Contact section:
- * - Email form powered by backend API
- * - Social links
- */
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
@@ -20,34 +15,23 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitError('');
     setIsSubmitting(true);
+    setSubmitError('');
 
     try {
-      const response = await fetch('/api/contact', {
+      const res = await fetch('https://formspree.io/f/xgodovpa', {  // ← replace YOUR_FORM_ID
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json' },
       });
 
-      if (!response.ok) {
-        let errorMessage = `Submission failed with status ${response.status}`;
-        try {
-          const data = await response.json();
-          if (data?.error) {
-            errorMessage = data.error;
-          }
-        } catch {
-          // Keep fallback status message if response is not JSON.
-        }
-        throw new Error(errorMessage);
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setSubmitError('Something went wrong. Please try again.');
       }
-
-      setSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setSubmitted(false), 4000);
-    } catch (error) {
-      setSubmitError(error.message || 'Unable to send right now. Please email me directly.');
+    } catch (err) {
+      setSubmitError('Network error. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -67,19 +51,14 @@ export default function Contact() {
               to talk tech — my inbox is open. I'll get back to you within 24 hours.
             </p>
 
-            <a
-              href={`mailto:${PERSONAL_INFO.email}`}
-              className={styles.emailLink}
-            >
+            <a href={`mailto:${PERSONAL_INFO.email}`} className={styles.emailLink}>
               {PERSONAL_INFO.email}
             </a>
 
-            {/* Social links */}
             <div className={styles.socials}>
               <SocialLink href={PERSONAL_INFO.social.github} label="GitHub">
                 <GitHubIcon />
               </SocialLink>
-              
               <SocialLink href={PERSONAL_INFO.social.linkedin} label="LinkedIn">
                 <LinkedInIcon />
               </SocialLink>
@@ -97,10 +76,7 @@ export default function Contact() {
                 <p>Message sent! I'll be in touch soon.</p>
               </div>
             ) : (
-              <form
-                className={styles.form}
-                onSubmit={handleSubmit}
-              >
+              <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.row}>
                   <div className={styles.field}>
                     <label className={styles.label} htmlFor="name">Name</label>
@@ -179,20 +155,14 @@ export default function Contact() {
 
 function SocialLink({ href, label, children }) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={label}
-      className={styles.socialLink}
-    >
+    <a href={href} target="_blank" rel="noopener noreferrer"
+      aria-label={label} className={styles.socialLink}>
       {children}
       <span>{label}</span>
     </a>
   );
 }
 
-/* Icons */
 function GitHubIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
@@ -200,8 +170,6 @@ function GitHubIcon() {
     </svg>
   );
 }
-
-
 
 function LinkedInIcon() {
   return (
