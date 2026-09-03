@@ -21,28 +21,20 @@ export const PERSONAL_INFO = {
 };
 
 export const PROJECTS = [
-  {
-    id: 1,
-    title: "SayHello",
-    description:
-      "Say Hello is a real-time chat app for instant, secure, and seamless conversations anytime, anywhere.",
-    tags: ["React", "Node.js", "expressjs", "socket.io" , "mongodb"],
-    github: "https://github.com/ervikrammishra-work/Chat-app",
-    live: "yet to be deployed",
-    featured: true,
-    year: "2026",
-  },
-  {
-    id: 2,
-    title: "easyMath",
-    description:
-      "A fun and interactive learning app built with Three.js that helps children explore and understand 3D shapes through colorful visualizations and playful interactions.",
-    tags: ["Three.js", "React", "Node.js", "expressjs", "TailwindCSS"],
-    github: "https://github.com/ervikrammishra-work/easyMath",
-    live: "yet to be deployed",
-    featured: true,
-    year: "2026",
-  },
+  
+{
+  id: 1,
+  title: "SayHello",
+  description:
+    "A real-time chat application for instant messaging with secure authentication, live communication, and persistent conversations.",
+  tags: ["React", "Node.js", "Express.js", "Socket.IO", "MongoDB", "Redis"],
+  github: "https://github.com/ervikrammishra-work/Chat-app",
+  live: "yet to be deployed",
+  featured: true,
+  year: "2026",
+},
+
+
   
 ];
 
