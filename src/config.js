@@ -16,7 +16,7 @@ export const PERSONAL_INFO = {
     
     github: "https://github.com/ervikrammishra-work",
     linkedin: "https://linkedin.com/in/vikram-mishra-811903367/",
-    twitter: "https://twitter.com/vikrammishra",
+    twitter: "https://x.com/VikramMishra911",
   },
 };
 
