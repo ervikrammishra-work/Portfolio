@@ -29,7 +29,7 @@ export const PROJECTS = [
     "A real-time chat application for instant messaging with secure authentication, live communication, and persistent conversations.",
   tags: ["React", "Node.js", "Express.js", "Socket.IO", "MongoDB", "Redis"],
   github: "https://github.com/ervikrammishra-work/Chat-app",
-  live: "yet to be deployed",
+  live: "https://project1-chat-app13.vercel.app/login",
   featured: true,
   year: "2026",
 },
